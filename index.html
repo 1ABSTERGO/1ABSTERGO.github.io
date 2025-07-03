@@ -1,54 +1,272 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Обзоры на фильмы</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieReviewZone</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter&display=swap" rel="stylesheet">
+  <style>
+  body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+}
+
+header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  background-color: #f5f5f5;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  color: #333;
+}
+
+nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ff5c00;
+}
+
+main {
+  padding: 40px 5%;
+  background-color: #ffffff;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie-review {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  animation: fadeIn 1.2s ease;
+}
+
+.poster img {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.poster img:hover {
+  transform: scale(1.05);
+}
+
+.movie-review .text {
+  max-width: 600px;
+  animation: fadeIn 1.4s ease;
+}
+
+.movie-review h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.movie-review p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.read-more {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff5c00;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.read-more:hover {
+  background-color: #e04d00;
+  transform: translateY(-2px);
+}
+
+.about-us, .contact-us {
+  padding: 40px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  margin-bottom: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-us h2, .contact-us h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-us p, .contact-us p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.contact-us form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-us input, .contact-us textarea {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s;
+}
+
+.contact-us input:focus, .contact-us textarea:focus {
+  box-shadow: 0 0 0 3px rgba(255, 92, 0, 0.2);
+  outline: none;
+}
+
+.contact-us button {
+  padding: 12px 20px;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-us button:hover {
+  background-color: #555;
+  transform: scale(1.03);
+}
+
+.hidden {
+  display: none;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  margin-right: 15px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  color: #ff5c00;
+  transform: translateY(-2px);
+}
+  </style>
 </head>
 <body>
   <header>
-    <div class="container">
-      <h1>🎬 Обзоры на фильмы</h1>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="reviews.html">Обзоры</a></li>
-          <li><a href="about.html">О нас</a></li>
-          <li><a href="contacts.html">Контакты</a></li>
-        </ul>
-      </nav>
-    </div>
+    <div class="logo">MovieReviewZone</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="reviews.html">Обзоры</a>
+      <a href="about-and-contact.html">О нас</a>
+      <a href="about-and-contact.html#contacts">Контакты</a>
+    </nav>
   </header>
 
   <main>
-    <section id="home" class="home-container">
-      <h2>Добро пожаловать!</h2>
-      <p>На этом сайте вы найдете честные и свежие обзоры на фильмы всех жанров.</p>
-    </section>
 
-    <section id="reviews" class="reviews-container">
-      <article class="review">
-        <h3>Дюна: Часть вторая (2024)</h3>
-        <img src="загружено (5).jpg" alt="Дюна: Часть вторая" class="review-image"/>
-        <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
-        <p>Продолжение масштабной эпопеи по Фрэнку Герберту. Великолепная визуализация и глубокая проработка персонажей.</p>
-        <a href="reviews.html" class="review-button">Посмотреть обзор</a>
-      </article>
+    <article class="movie-review">
+      <div class="poster">
+        <img src="images/image 7.png" alt="Постер сериала The Last of Us">
+      </div>
+      <div class="text">
+        <h2>Одни из нас (The Last of Us)</h2>
+        <p>Постапокалиптический драматический сериал от HBO, основанный на одноимённой видеоигре. История Джоэла и Элли — двоих выживших, путешествующих по разрушенной Америке.</p>
+        <a href="review-last-of-us.html" class="read-more">Читать обзор</a>
+      </div>
+    </article>
 
-      <article class="review">
-        <h3>Оппенгеймер (2023)</h3>
-        <img src="загружено (6).jpg" alt="Оппенгеймер" class="review-image"/>
-        <p><strong>Оценка:</strong> ⭐⭐⭐⭐⭐</p>
-        <p>Мощная драма от Кристофера Нолана. Историческая точность сочетается с напряжённой атмосферой.</p>
-        <a href="reviews.html" class="review-button">Посмотреть обзор</a>
-      </article>
-    </section>
+    <article class="movie-review">
+      <div class="poster">
+        <img src="images/image 10.png" alt="Постер фильма Грешники">
+      </div>
+      <div class="text">
+        <h2>Грешники (The Little Things)</h2>
+        <p>Детектив из прошлого и амбициозный молодой следователь пытаются поймать серийного убийцу в Лос-Анджелесе. Атмосферный триллер с сильной актёрской игрой и мрачной эстетикой.</p>
+        <a href="review-little-things.html" class="read-more">Читать обзор</a>
+      </div>
+    </article>
+
+    <article class="about-us hidden">
+      <h2>О нас</h2>
+      <p>Мы — команда энтузиастов, которая занимается созданием обзоров на фильмы и сериалы. Наши цели — делиться множеством интересных рекомендаций и свежими новинками для зрителей по всему миру. Мы любим искусство кино и хотим вдохновлять других на новые открытия.</p>
+    </article>
+
+    <article class="contact-us hidden">
+      <h2>Контакты</h2>
+      <p>Если у вас есть вопросы, предложения или комментарии, не стесняйтесь обращаться к нам через форму ниже!</p>
+      <form action="#" method="POST">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Ваш email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Ваше сообщение:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+    </article>
+
+
   </main>
-
-  <footer>
-    <p>&copy; 2025 Обзоры на фильмы. Все права защищены.</p>
-  </footer>
-
 </body>
 </html>
